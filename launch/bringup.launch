@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node pkg="rosbot" name="rosbot_node" type="rosbot_node" output="screen"/>
+
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find rosbot)/urdf/rosbot.urdf'"/>
+
+    <!-- <param name="use_gui" value="true"/> -->
+    <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" /> -->
+    <!-- <node name="rviz" pkg="rviz" type="rviz"/> -->
+    
+    <!-- Load the default controllers -->
+    <rosparam command="load" file="$(find rosbot)/config/controllers.yaml"/>
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+      output="screen" ns="/" args=" right_joint_velocity_controller
+                                    left_joint_velocity_controller
+                                    joint_state_controller" />
+    <node name="serial_node" pkg="rosserial_python" type="serial_node.py" output="screen" args="/dev/ttyUSB0"/>
+</launch>

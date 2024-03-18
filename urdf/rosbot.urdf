@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<robot name="rosbot">
+
+  <!-- Robot Base Link -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.35 0.2 0.05"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.35 0.2 0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.02"/>
+    </inertial>
+  </link>
+
+  <!-- Left Wheel -->
+  <link name="left_wheel_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+    </inertial>
+  </link>
+
+  <!-- Right Wheel -->
+  <link name="right_wheel_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.02"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.1"/>
+      <inertia ixx="0.0001" ixy="0" ixz="0" iyy="0.0001" iyz="0" izz="0.0001"/>
+    </inertial>
+  </link>
+
+  <!-- Joint for Left Wheel -->
+  <joint name="left_wheel_joint" type="continuous">
+    <origin xyz="0.1 0.12 0" rpy="1.5707963267948966 0 0"/>
+    <parent link="base_link"/>
+    <child link="left_wheel_link"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <!-- Joint for Right Wheel -->
+  <joint name="right_wheel_joint" type="continuous">
+    <origin xyz="0.1 -0.12 0" rpy="1.5707963267948966 0 0"/>
+    <parent link="base_link"/>
+    <child link="right_wheel_link"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+</robot>
