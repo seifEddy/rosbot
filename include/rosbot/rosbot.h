@@ -11,9 +11,6 @@ class RosBot : public hardware_interface::RobotHW
 public:
   RosBot(ros::NodeHandle& nh) : _nh(nh)
   { 
-    // Initialization of the robot's resources (joints, sensors, actuators) and
-    // interfaces can be done here or inside init().
-    // E.g. parse the URDF for joint names & interfaces, then initialize them*
     init();
     /** SETUP ROS PUBLISHERS AND SUBSCRIBERS **/
     // Setup the subscribers we need
