@@ -87,7 +87,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES velocity_controller
+#  LIBRARIES rosbot
 #  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
@@ -106,7 +106,10 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(${PROJECT_NAME}_node src/rosbot.cpp)
+add_executable(${PROJECT_NAME}_node src/rosbot_driver.cpp src/rosbot.cpp)
+
+# add_library(rosbot src/rosbot.cpp)
+# target_link_libraries(rosbot ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
